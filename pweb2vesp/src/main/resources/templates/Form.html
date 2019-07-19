@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<meta charset="UTF-8" />
+<head>
+</head>
+<body>
+    <form method="POST" action="cadastro_novo_aluno">
+        <div>
+            <label>Nome:</label><br>
+            <input type="text" name="nome">
+        </div>
+        <div>
+            <label>Idade:</label><br>
+            <input type="text" name="idade">
+        </div>
+        <br><input type="submit" name="enviar" value="Enviar">
+    </form>
+    <p th:text="${mensagem}"></p>
+</body>
+</html>
