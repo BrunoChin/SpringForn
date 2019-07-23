@@ -44,12 +44,23 @@
       font-style: oblique !important;
       font-size: 110%;
     }
+
+    .mensage{
+      font-size: 20px;
+      float: right;
+      position: relative;
+    }
   </style>
   <!-- Custom styles for this template -->
 </head>
 
 <body class="bg-light">
   <div class="container">
+    <div class="row">
+      <div class="col-md-4 mensage">
+        <p th:text="${mensage}"></p>
+      </div>
+    </div>
     <div class="py-5 text-center">
       <h2 class="lead">Formulario de Cadastro</h2>
     </div>
@@ -144,128 +155,131 @@
             <label for="confSenha" class="labelCampo">Confirma senha* 
             	<span class="mg_erro mg_confSenha" style="display: none"> Campo Obrigatorio</span>
             </label>
-            <input type="password" class="form-control" id="confSenha" placeholder="" required="">
+            <input type="password" class="form-control" id="confSenha" placeholder="" required>
           </div>
         </div>
         <hr class="mb-4">
         <div class="row">
-          <button class="btn btn-primary col-md-3 mb-3" onclick="validar()" type="submit">Validar</button>
-          <button class="btn btn-danger col-md-3 mb-3" type="reset">Limpar</button>
+          <input class="btn btn-primary col-md-3 mb-3" onclick="return validar()" type="submit">
+          <input class="btn btn-danger col-md-3 mb-3" type="reset">
         </div>
       </form>
       </div>
     </div>
   </div>
-  <script>
-    function validar() {
-    	
-      var nome = document.getElementById("nome");
-      var spanNome = document.querySelector(".mg_nome");
-      var spanNomeInvalido = document.querySelector(".mg_nome_invalido");
-     
-
-      if (nome.value == "") {
-        spanNome.style.display = "inline-block";
-        spanNomeInvalido.style.display = "none";
-        return false;
-      }
-      else{
-        spanNome.style.display = "none";
-        if(nome.value.length < 4){
-          spanNomeInvalido.style.display = "inline-block";
-          return false;
-        }
-        else{
-          
-          spanNomeInvalido.style.display = "none";
-        }
-      }
-
-      var email = document.getElementById("email");
-      var spanEmail = document.querySelector(".mg_email")
-      var spanEmailInvalido = document.querySelector(".mg_email_invalido")
-
-      if(email.value == ""){
-        spanEmail.style.display = "inline-block";
-        spanEmailInvalido.style.display = "none";
-        return false;
-      }
-      else{
-        spanEmail.style.display = "none";
-        if(email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1){
-          spanEmailInvalido.style.display = "inline-block";
-          return false;
-        }
-        else{
-          spanEmailInvalido.style.display = "none";
-        }
-      }
-
-      var cpf = document.getElementById("cpf");
-      var spanCpf = document.querySelector(".mg_cpf")
-      var spanCpfInvalido = document.querySelector(".mg_cpf_invalido")
-
-      if(cpf.value == ""){
-        spanCpf.style.display = "inline-block";
-        spanCpfInvalido.style.display = "none";
-        return false;
-      }
-      else{
-        spanCpf.style.display = "none";
-        if( cpf.value.length < 11){
-          spanCpfInvalido.style.display = "inline-block";
-          return false;
-        }
-        else{
-          spanCpfInvalido.style.display = "none";
-          return false;
-        }
-      }
-      
-      var checkbox = document.getElementsByName("areas");
-      var spanCheckbox = document.querySelector(".mg_areas");
-      var checkboxCheck = false;
-      for(var i = 0; i < checkbox.length; i++){
-    	  if(checkbox[i].checked == true){
-    		  checkboxCheck = true;
-    	  }
-      }
-      if(checkboxCheck){
-    	  spanCheckbox.style.display = "none";
-      }
-      else{
-    	  spanCheckbox.style.display = "inline-block";
-      }
-      
-      var senha = document.getElementById("senha");
-      var confSenha = document.getElementById("confSenha");
-      var spanSenha = document.querySelector(".mg_senha");
-      var spanConfSenha = document.querySelector(".mg_confSenha");
-      var spanSenhaInvalida = document.querySelector(".mg_senhaInvalida");
-      
-      if(senha.value == ""){
-    	  spanSenha.style.display = "inline-block";
-      }
-      else{
-    	  spanSenha.style.display = "none";
-    	  if(confSenha.value == ""){
-    		  spanConfSenha.style.display = "inline-block";
-    	  }
-    	  else{
-    		  spanConfSenha.style.display = "none";
-    		  if(senha.value != confSenha.value){
-    			  console.log(senha.value);
-    			  console.log(confSenha.value);
-    			  spanSenhaInvalida.style.display = "inline-block";
-    		  }
-    		  else{
-    			  spanSenhaInvalida.style.display = "none";
-    		  }
-    	  }
-      }
-      
-    }
-  </script>
 </body>
+<script>
+  function validar() {
+    
+    var nome = document.getElementById("nome");
+    var spanNome = document.querySelector(".mg_nome");
+    var spanNomeInvalido = document.querySelector(".mg_nome_invalido");
+    
+
+    if (nome.value == "") {
+      spanNome.style.display = "inline-block";
+      spanNomeInvalido.style.display = "none";
+      return false;
+    }
+    else{
+      spanNome.style.display = "none";
+      if(nome.value.length < 4){
+        spanNomeInvalido.style.display = "inline-block";
+        return false;
+      }
+      else{
+        spanNomeInvalido.style.display = "none";
+      }
+    }
+
+    var email = document.getElementById("email");
+    var spanEmail = document.querySelector(".mg_email")
+    var spanEmailInvalido = document.querySelector(".mg_email_invalido")
+
+    if(email.value == ""){
+      spanEmail.style.display = "inline-block";
+      spanEmailInvalido.style.display = "none";
+      return false;
+    }
+    else{
+      spanEmail.style.display = "none";
+      if(email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1){
+        spanEmailInvalido.style.display = "inline-block";
+        return false;
+      }
+      else{
+        spanEmailInvalido.style.display = "none";
+      }
+    }
+
+    var cpf = document.getElementById("cpf");
+    var spanCpf = document.querySelector(".mg_cpf")
+    var spanCpfInvalido = document.querySelector(".mg_cpf_invalido")
+
+    if(cpf.value == ""){
+      spanCpf.style.display = "inline-block";
+      spanCpfInvalido.style.display = "none";
+      return false;
+    }
+    else{return false;
+      spanCpf.style.display = "none";
+      if( cpf.value.length < 11){
+        spanCpfInvalido.style.display = "inline-block";
+        return false;
+      }
+      else{
+        spanCpfInvalido.style.display = "none";
+      }
+    }
+    console.log("chegou aq");
+    var checkbox = document.getElementsByName("areas");
+    var spanCheckbox = document.querySelector(".mg_areas");
+    var checkboxCheck = false;
+    for(var i = 0; i < checkbox.length; i++){
+      if(checkbox[i].checked == true){
+        checkboxCheck = true;
+      }
+    }
+    if(checkboxCheck){
+      spanCheckbox.style.display = "none";
+    }
+    else{
+      spanCheckbox.style.display = "inline-block";
+      return false;
+    }
+    
+    var senha = document.getElementById("senha");
+    var confSenha = document.getElementById("confSenha");
+    var spanSenha = document.querySelector(".mg_senha");
+    var spanConfSenha = document.querySelector(".mg_confSenha");
+    var spanSenhaInvalida = document.querySelector(".mg_senhaInvalida");
+    
+    if(senha.value == ""){
+      console.log("chegou aq");
+      spanSenha.style.display = "inline-block";
+      return false;
+    }
+    else{
+      spanSenha.style.display = "none";
+      if(confSenha.value == ""){
+        spanConfSenha.style.display = "inline-block";
+        return false;
+      }
+      else{
+        spanConfSenha.style.display = "none";
+        if(senha.value != confSenha.value){
+          console.log(senha.value);
+          console.log(confSenha.value);
+          spanSenhaInvalida.style.display = "inline-block";
+          return false;
+        }
+        else{
+          spanSenhaInvalida.style.display = "none";
+        }
+      }
+    }
+    return true;
+  }
+</script>
 
 </html>

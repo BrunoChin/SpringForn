@@ -1,15 +1,12 @@
 package br.edu.ifal.tarde.formularioweb;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Aluno{
     private String nome;
     private String email;
     private String cpf;
     private String sexo;
     private String modulo;
-    private List<String> areas = new ArrayList<String>();
+    private String areas;
     private String senha;
 
     public String getNome(){
@@ -52,11 +49,11 @@ public class Aluno{
         this.modulo = modulo;
     }
 
-    public List<String> getAreas() {
+    public String getAreas() {
         return areas;
     }
 
-    public void setAreas(List<String> areas) {
+    public void setAreas(String areas) {
         this.areas = areas;
     }
 
