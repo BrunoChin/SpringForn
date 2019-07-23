@@ -23,7 +23,7 @@ public class ControlerPrincipal{
         aluno.setAreas(areas);
         aluno.setSenha(senha);
         ModelAndView reposta = new ModelAndView("FormularioWeb.html");
-        reposta.addObject("mensage", aluno.getNome() + " Foi cadastrado com sucesso");
+        reposta.addObject("mensage", "<script> alert(O Aluno " + aluno.getNome() + " Foi cadastrado co sucesso);</script>");
         return reposta;
     }
 }

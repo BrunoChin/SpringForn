@@ -177,7 +177,7 @@
     
 
     if (nome.value == "") {
-      spanNome.style.display = "inline-block";
+      spanNome.style.display = "inline-block";  
       spanNomeInvalido.style.display = "none";
       return false;
     }
@@ -221,7 +221,7 @@
       spanCpfInvalido.style.display = "none";
       return false;
     }
-    else{return false;
+    else{
       spanCpf.style.display = "none";
       if( cpf.value.length < 11){
         spanCpfInvalido.style.display = "inline-block";
