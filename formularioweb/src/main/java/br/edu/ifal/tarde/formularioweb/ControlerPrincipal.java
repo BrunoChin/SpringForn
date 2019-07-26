@@ -13,6 +13,10 @@ public class ControlerPrincipal{
 
     @RequestMapping("/novo_aluno")
     public ModelAndView cadastroNovoAluno(Aluno aluno){
+        AlunoRepositorio alunoRepositorio;
+
+        alunoRepositorio.save(aluno);
+
         ModelAndView reposta = new ModelAndView("FormularioWeb.html");
         reposta.addObject("mensage", "O Aluno " + aluno.getNome() + " Foi cadastrado co sucesso");
         return reposta;
