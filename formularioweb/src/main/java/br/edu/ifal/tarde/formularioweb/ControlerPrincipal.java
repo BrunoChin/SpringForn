@@ -12,18 +12,9 @@ public class ControlerPrincipal{
     }
 
     @RequestMapping("/novo_aluno")
-    public ModelAndView cadastroNovoAluno(String nome, String email, String cpf,
-        String sexo, String modulo,String areas, String senha){
-        Aluno aluno = new Aluno();
-        aluno.setNome(nome);
-        aluno.setEmail(email);
-        aluno.setCpf(cpf);
-        aluno.setSexo(sexo);
-        aluno.setModulo(modulo);
-        aluno.setAreas(areas);
-        aluno.setSenha(senha);
+    public ModelAndView cadastroNovoAluno(Aluno aluno){
         ModelAndView reposta = new ModelAndView("FormularioWeb.html");
-        reposta.addObject("mensage", "<script> alert(O Aluno " + aluno.getNome() + " Foi cadastrado co sucesso);</script>");
+        reposta.addObject("mensage", "O Aluno " + aluno.getNome() + " Foi cadastrado co sucesso");
         return reposta;
     }
 }

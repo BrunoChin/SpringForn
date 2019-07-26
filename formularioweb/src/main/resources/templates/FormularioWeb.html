@@ -57,8 +57,8 @@
 <body class="bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 mensage">
-        <p th:text="${mensage}"></p>
+      <div class="col-md-12 mensage">
+        <p th:text="${mensage}" style="text-align: center"></p>
       </div>
     </div>
     <div class="py-5 text-center">
@@ -159,9 +159,9 @@
           </div>
         </div>
         <hr class="mb-4">
-        <div class="row">
-          <input class="btn btn-primary col-md-3 mb-3" onclick="return validar()" type="submit">
-          <input class="btn btn-danger col-md-3 mb-3" type="reset">
+        <div class="row" style="text-align: center;">
+          <input class="btn btn-primary col-md-3 mb-6" style="margin: 5%" onclick="return validar()" type="submit">
+          <input class="btn btn-danger col-md-3 mb-6" style="margin: 5%" type="reset">
         </div>
       </form>
       </div>
@@ -170,6 +170,8 @@
 </body>
 <script>
   function validar() {
+
+    var valided = true;
     
     var nome = document.getElementById("nome");
     var spanNome = document.querySelector(".mg_nome");
@@ -179,13 +181,13 @@
     if (nome.value == "") {
       spanNome.style.display = "inline-block";  
       spanNomeInvalido.style.display = "none";
-      return false;
+      valided = false;
     }
     else{
       spanNome.style.display = "none";
       if(nome.value.length < 4){
         spanNomeInvalido.style.display = "inline-block";
-        return false;
+        valided = false;
       }
       else{
         spanNomeInvalido.style.display = "none";
@@ -199,13 +201,13 @@
     if(email.value == ""){
       spanEmail.style.display = "inline-block";
       spanEmailInvalido.style.display = "none";
-      return false;
+      valided = false;
     }
     else{
       spanEmail.style.display = "none";
       if(email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1){
         spanEmailInvalido.style.display = "inline-block";
-        return false;
+        valided = false;
       }
       else{
         spanEmailInvalido.style.display = "none";
@@ -219,13 +221,13 @@
     if(cpf.value == ""){
       spanCpf.style.display = "inline-block";
       spanCpfInvalido.style.display = "none";
-      return false;
+      valided = false;
     }
     else{
       spanCpf.style.display = "none";
       if( cpf.value.length < 11){
         spanCpfInvalido.style.display = "inline-block";
-        return false;
+        valided = false;
       }
       else{
         spanCpfInvalido.style.display = "none";
@@ -245,7 +247,7 @@
     }
     else{
       spanCheckbox.style.display = "inline-block";
-      return false;
+      valided = false;
     }
     
     var senha = document.getElementById("senha");
@@ -255,30 +257,27 @@
     var spanSenhaInvalida = document.querySelector(".mg_senhaInvalida");
     
     if(senha.value == ""){
-      console.log("chegou aq");
       spanSenha.style.display = "inline-block";
-      return false;
+      valided = false;
     }
     else{
       spanSenha.style.display = "none";
       if(confSenha.value == ""){
         spanConfSenha.style.display = "inline-block";
-        return false;
+        valided = false;
       }
       else{
         spanConfSenha.style.display = "none";
         if(senha.value != confSenha.value){
-          console.log(senha.value);
-          console.log(confSenha.value);
           spanSenhaInvalida.style.display = "inline-block";
-          return false;
+          valided = false;
         }
         else{
           spanSenhaInvalida.style.display = "none";
         }
       }
     }
-    return true;
+    return valided;
   }
 </script>
 
