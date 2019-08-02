@@ -6,6 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ControlerPrincipal{
+    
+    private AlunoRepositorio alunoRepositorio;
+
     @RequestMapping("/")
     public ModelAndView index(){
         return new ModelAndView("FormularioWeb.html");
@@ -13,7 +16,6 @@ public class ControlerPrincipal{
 
     @RequestMapping("/novo_aluno")
     public ModelAndView cadastroNovoAluno(Aluno aluno){
-        AlunoRepositorio alunoRepositorio;
 
         alunoRepositorio.save(aluno);
 
