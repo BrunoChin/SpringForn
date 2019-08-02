@@ -108,37 +108,26 @@
 
           <p class="mb-3 labelCampo">Modulo* </p>
 
-          <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-              <input id="primeiro" name="modulo" type="radio" class="custom-control-input" checked=""
-                required="">
-              <label class="custom-control-label" for="primeiro">Primeiro</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="segundo" name="modulo" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="segundo">Segundo</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="terceiro" name="modulo" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="terceiro">Terceiro</label>
-            </div>
+          <div class="col-md-6 mb-3">
+            <select autofocus class="custom-select d-block w-100" id="sexo" required="" name="modulo">
+              <option>Primeiro</option>
+              <option>Segundo</option>
+              <option>Terceiro</option>
+            </select>
           </div>
+
+        
 
           <p class="mb-3 labelCampo">Areas de atuação preferidas* 
           	<span class="mg_erro mg_areas" style="display: none"> Campo Obrigatorio</span>
           </p>
 
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="programacao" name="areas">
-            <label class="custom-control-label" for="programacao">Programação</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="redes" name="areas">
-            <label class="custom-control-label" for="redes">Redes de computadores</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="manutencao" name="areas">
-            <label class="custom-control-label" for="manutencao">Manutenção de computadores</label>
+          <div class="col-md-6 mb-3">
+            <select multiple class="custom-select d-block w-100" id="sexo" required="" name="areas">
+              <option>Programação</option>
+              <option>Redes de computadores</option>
+              <option>Manutenção de computadores</option>
+            </select>
           </div>
           
           <br>
@@ -149,7 +138,7 @@
             	<span class="mg_erro mg_senha" style="display: none"> Campo Obrigatorio</span>
             	<span class="mg_erro mg_senhaInvalida" style="display: none"> As senhas não são iguais</span>
             </label>
-            <input type="password" class="form-control" id="senha" placeholder="" required="">
+            <input type="password" class="form-control" id="senha" placeholder="" required="" name="senha">
           </div>
           <div class="col-md-6 mb-3">
             <label for="confSenha" class="labelCampo">Confirma senha* 
@@ -234,6 +223,7 @@
       }
     }
     console.log("chegou aq");
+    /*
     var checkbox = document.getElementsByName("areas");
     var spanCheckbox = document.querySelector(".mg_areas");
     var checkboxCheck = false;
@@ -249,6 +239,7 @@
       spanCheckbox.style.display = "inline-block";
       valided = false;
     }
+    */
     
     var senha = document.getElementById("senha");
     var confSenha = document.getElementById("confSenha");
