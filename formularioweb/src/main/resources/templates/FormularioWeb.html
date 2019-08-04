@@ -67,14 +67,14 @@
 
     <div class="row">
       <div class="col-md-12 order-md-1">
-        <form class="needs-validation" novalidate="" method="POST" action="novo_aluno">
+        <form class="needs-validation" novalidate="" method="POST" action="/novo_aluno">
           <div class="row">
             <div class="col-md-12 mb-3">
               <label for="name" class="labelCampo">Nome* 
                 <span class="mg_erro mg_nome" style="display: none"> Campo Obrigatorio</span>
                 <span class="mg_erro mg_nome_invalido" style="display: none"> Nome invalido</span>
               </label>
-              <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="" required="">
+              <input th:value="${aluno.nome}" type="text" class="form-control" id="nome" name="nome" placeholder="" value="" required="">
             </div>
           </div>
 
@@ -83,7 +83,7 @@
               <span class="mg_erro mg_email" style="display: none"> Campo Obrigatorio</span>
               <span class="mg_erro mg_email_invalido" style="display: none"> Email invalido</span>
             </label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+            <input th:value="${aluno.email}" type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
           </div>
 
           <div class="row">
@@ -92,7 +92,7 @@
               <span class="mg_erro mg_cpf" style="display: none"> Campo Obrigatorio</span>
               <span class="mg_erro mg_cpf_invalido" style="display: none"> CPF invalido</span>
               </label>
-              <input type="text" class="form-control" name="cpf" id="cpf" placeholder="" required="">
+              <input th:value="${aluno.cpf}" type="text" class="form-control" name="cpf" id="cpf" placeholder="" required="">
             </div>
             <div class="col-md-6 mb-3">
               <label for="sexo" class="labelCampo">Sexo*</label>
@@ -109,10 +109,10 @@
           <p class="mb-3 labelCampo">Modulo* </p>
 
           <div class="col-md-6 mb-3">
-            <select autofocus class="custom-select d-block w-100" id="sexo" required="" name="modulo">
-              <option>Primeiro</option>
-              <option>Segundo</option>
-              <option>Terceiro</option>
+            <select class="custom-select d-block w-100" id="modulo" required="" name="modulo">
+              <option th:selected="${aluno.modulo=='Primeiro'}">Primeiro</option>
+              <option th:selected="${aluno.modulo=='Segundo'}">Segundo</option>
+              <option th:selected="${aluno.modulo=='Terceiro'}">Terceiro</option>
             </select>
           </div>
 
@@ -123,10 +123,10 @@
           </p>
 
           <div class="col-md-6 mb-3">
-            <select multiple class="custom-select d-block w-100" id="sexo" required="" name="areas">
-              <option>Programação</option>
-              <option>Redes de computadores</option>
-              <option>Manutenção de computadores</option>
+            <select multiple class="custom-select d-block w-100" id="areas" required="" name="areas">
+              <option th:selected="${aluno.areas != null ? #arrays.contains(aluno.areas, 'Programação') : false}">Programação</option>
+              <option th:selected="${aluno.areas != null ? #arrays.contains(aluno.areas, 'Redes de computadores') : false}">Redes de computadores</option>
+              <option th:selected="${aluno.areas != null ? #arrays.contains(aluno.areas, 'Montagem e Manutenção') : false}">Manutenção de computadores</option>
             </select>
           </div>
           
@@ -138,7 +138,7 @@
             	<span class="mg_erro mg_senha" style="display: none"> Campo Obrigatorio</span>
             	<span class="mg_erro mg_senhaInvalida" style="display: none"> As senhas não são iguais</span>
             </label>
-            <input type="password" class="form-control" id="senha" placeholder="" required="" name="senha">
+            <input th:value="${aluno.senha}"  th:readonly="${aluno.senha}" type="password" class="form-control" id="senha" placeholder="" required="" name="senha">
           </div>
           <div class="col-md-6 mb-3">
             <label for="confSenha" class="labelCampo">Confirma senha* 

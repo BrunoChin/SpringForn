@@ -20,8 +20,10 @@ public class ControlerPrincipal{
     }
 
     @RequestMapping("/formulario")
-    public ModelAndView Cadastro(){
-        return new ModelAndView("FormularioWeb.html");
+    public ModelAndView Cadastro(Aluno aluno){
+        ModelAndView resposta = new ModelAndView("FormularioWeb.html");
+        resposta.addObject("aluno", aluno);
+        return resposta;
     }
 
     @RequestMapping("/novo_aluno")
@@ -29,8 +31,9 @@ public class ControlerPrincipal{
 
         alunoRepositorio.save(aluno);
 
-        ModelAndView reposta = new ModelAndView("FormularioWeb.html");
+        ModelAndView reposta = new ModelAndView("redirect:/listar_alunos");
         redirect.addFlashAttribute("mensagem", aluno.getNome() + " cadastrado com sucesso.");
+        
         return reposta;
     }
 
@@ -47,14 +50,26 @@ public class ControlerPrincipal{
         Optional<Aluno> opcao = alunoRepositorio.findById(alunoID);
         ModelAndView resposta = new ModelAndView("redirect:/listar_alunos");        
         if(opcao.isPresent()){
-            Aluno a = opcao.get();
-            alunoRepositorio.deleteById(a.getId());            
-            redirect.addFlashAttribute("mensagem", a.getNome() + " excluído com sucesso.");
+            Aluno aluno = opcao.get();
+            alunoRepositorio.deleteById(aluno.getId());            
+            redirect.addFlashAttribute("mensagem", aluno.getNome() + " excluído com sucesso.");
             return resposta;
         } else {
             redirect.addFlashAttribute("mensagem", "Aluno " + alunoID + " não existe no Banco de Dados.");
             return resposta;
         }
         
+    }
+
+    @RequestMapping("/atualizar_aluno/{idAluno}")
+    public ModelAndView atualizar( @PathVariable ("idAluno") Long alunoID){
+        Optional<Aluno> opcao = alunoRepositorio.findById(alunoID);
+        ModelAndView resposta = new ModelAndView ("FormularioWeb.html");
+        if (opcao.isPresent()) {
+            Aluno aluno = opcao.get();
+            resposta.addObject("aluno", aluno);
+            return resposta;
+        }
+        return resposta;
     }
 }

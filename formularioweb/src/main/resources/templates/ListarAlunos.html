@@ -17,30 +17,41 @@
 </head>
 
 <body>
-    <h1>Lista de alunos cadastrados</h1>
+    <div>
+        <div class="row">
+            <div class="col-md-8 ms-8">
+                <h1>Lista de alunos cadastrados</h1>
+            </div>
+            <div class="col-md-4 ms-4">
+                <a href="/formulario">
+                    <button class="btn btn-success">Cadastrar</button>
+                </a>
+            </div>
+        </div>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">modulo</th>
-                <th scope="col">email</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="aluno : ${alunos}">
-                <td th:text="${aluno.id}"></td>
-                <td th:text="${aluno.nome}"></td>
-                <td th:text="${aluno.modulo}"></td>
-                <td th:text="${aluno.email}"></td>
-                <td><a th:href="@{'/deletar_aluno/' + ${aluno.id}}">Excluir</a></td>
-                <td><a th:href="@{'/atualizar_aluno/' + ${aluno.id}}">Atualizar</a></td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">modulo</th>
+                    <th scope="col">email</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.id}"></td>
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.modulo}"></td>
+                    <td th:text="${aluno.email}"></td>
+                    <td><a th:href="@{'/deletar_aluno/' + ${aluno.id}}">Excluir</a></td>
+                    <td><a th:href="@{'/atualizar_aluno/' + ${aluno.id}}">Atualizar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
