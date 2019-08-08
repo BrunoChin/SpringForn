@@ -72,4 +72,10 @@ public class ControlerPrincipal{
         }
         return resposta;
     }
+
+    @RequestMapping("/logar")
+    public ModelAndView logar(){
+        ModelAndView resposta = new ModelAndView("login.html");
+        return resposta;
+    }
 }

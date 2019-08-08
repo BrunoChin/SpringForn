@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://getbootstrap.com/docs/4.3/examples/checkout/ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout">
+<meta charset="UTF-8" />
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Cadastro</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .mg_erro {
+            color: red;
+        }
+
+        .labelCampo {
+            font-style: oblique !important;
+            font-size: 110%;
+        }
+
+        .mensage {
+            font-size: 20px;
+            float: right;
+            position: relative;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            <div class="py-5 text-center">
+                <h2 class="lead">Formulario de Cadastro</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 order-md-1">
+                    <form class="needs-validation" novalidate="" method="POST" action="/novo_aluno">
+                        <div class="mb-12">
+                            <label for="email" class="labelCampo">Email*
+                                <span class="mg_erro mg_email" style="display: none"> Campo Obrigatorio</span>
+                                <span class="mg_erro mg_email_invalido" style="display: none"> Email invalido</span>
+                            </label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="you@example.com">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="senha" class="labelCampo">Senha*
+                                    <span class="mg_erro mg_senha" style="display: none"> Campo Obrigatorio</span>
+                                    <span class="mg_erro mg_senhaInvalida" style="display: none"> As senhas não são
+                                        iguais</span>
+                                </label>
+                                <input type="password" class="form-control" id="senha" placeholder="" required=""
+                                    name="senha">
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <div class="row" style="text-align: center;">
+                            <input class="btn btn-primary col-md-3 mb-6" style="margin: 5%" onclick="return validar()"
+                                type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</body>
+
+</html>
