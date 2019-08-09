@@ -68,6 +68,7 @@
     <div class="row">
       <div class="col-md-12 order-md-1">
         <form class="needs-validation" novalidate="" method="POST" action="/novo_aluno">
+          <input type="number" name="id" th:value="${aluno.id}" style="display: none">
           <div class="row">
             <div class="col-md-12 mb-3">
               <label for="name" class="labelCampo">Nome* 
@@ -92,7 +93,7 @@
               <span class="mg_erro mg_cpf" style="display: none"> Campo Obrigatorio</span>
               <span class="mg_erro mg_cpf_invalido" style="display: none"> CPF invalido</span>
               </label>
-              <input th:value="${aluno.cpf}" type="text" class="form-control" name="cpf" id="cpf" placeholder="" required="">
+              <input th:value="${aluno.cpf}" type="text" class="form-control" name="cpf" id="cpf" placeholder="" required="" maxlength="11">
             </div>
             <div class="col-md-6 mb-3">
               <label for="sexo" class="labelCampo">Sexo*</label>
@@ -161,7 +162,7 @@
   function validar() {
 
     var valided = true;
-    
+    rect.addFlashAttribute("mensagem", aluno.getNome() + " excluído com sucesso.");ord  
     var nome = document.getElementById("nome");
     var spanNome = document.querySelector(".mg_nome");
     var spanNomeInvalido = document.querySelector(".mg_nome_invalido");

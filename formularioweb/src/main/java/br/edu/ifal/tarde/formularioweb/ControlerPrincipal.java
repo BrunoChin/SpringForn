@@ -1,5 +1,6 @@
 package br.edu.ifal.tarde.formularioweb;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,18 @@ public class ControlerPrincipal{
     @RequestMapping("/logar")
     public ModelAndView logar(){
         ModelAndView resposta = new ModelAndView("login.html");
+        return resposta;
+    }
+
+    @RequestMapping("/buscar")
+    public ModelAndView buscarNome(String q){
+        ModelAndView resposta = new ModelAndView("ListarAlunos.html");
+        List<Aluno> alunos = alunoRepositorio.findByNomeContaining(q);
+        if(!alunos.isEmpty()){
+            resposta.addObject("alunos", alunos);
+            return resposta;
+        }
+        resposta.addObject("mensage","Não existe esse Aluno no banco de dados");
         return resposta;
     }
 }
